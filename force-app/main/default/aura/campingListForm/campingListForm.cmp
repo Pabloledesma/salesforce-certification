@@ -1,0 +1,51 @@
+<aura:component>
+
+    
+
+    <div aria-labelledby="newItemForm">
+        <fieldset class="slds-box slds-theme--default slds-container--small">
+            <legend id="newItemForm" class="slds-text-heading--small 
+              slds-p-vertical--medium">
+              Add new Item
+            </legend>
+      
+            <form class="slds-form--stacked">          
+                <lightning:input aura:id="ItemForm" label="Name"
+                                 name="name"
+                                 value="{!v.newItem.Name}"
+                                 required="true"/> 
+                
+                <lightning:input type="number" aura:id="ItemForm" label="Quantity"
+                                name="quantity"
+                                min="1"
+                                value="{!v.newItem.Quantity__c}"
+                                messageWhenRangeUnderflow="Enter a quantity at least 1"/>
+                
+                <lightning:input aura:id="ItemForm" label="Price"
+                                type="number"
+                                formatter="currency" 
+                                name="price"
+                                value="{!v.newItem.Price__c}"/>
+
+                <lightning:input type="checkbox" aura:id="ItemForm" label="Packed?"  
+                                 name="packed"
+                                 checked="{!v.newItem.Packed__c}"/>
+
+                <lightning:button label="Create new item" 
+                                  class="slds-m-top--medium"
+                                  variant="brand"
+                                  onclick="{!c.clickCreateItem}"/>
+            </form>
+      
+        </fieldset>
+
+        <lightning:card title="Items">
+            <p class="slds-p-horizontal--small">
+                <aura:iteration items="{!v.items}" var="item">
+                    <c:campingListItem item="{!item}"/>
+                </aura:iteration>
+            </p>
+        </lightning:card>
+    </div>
+
+</aura:component>	

@@ -15,20 +15,10 @@
         // Send action off to be executed
         $A.enqueueAction(action);
     },
-    
-    clickCreateItem : function(component, event, helper) {
-        
-        var validItem = component.find('ItemForm').reduce(function (validSoFar, inputCmp) {
-            // Displays error messages for invalid fields
-            inputCmp.showHelpMessageIfInvalid();
-            return validSoFar && inputCmp.get('v.validity').valid;
-        }, true);
-        // If we pass error checking, do some real work
-        if(validItem){
-           
-            var newItem = component.get("v.newItem"); 
-            // Create the new item
-            helper.createItem(component, newItem);
-        }
+
+    //The handleAdditem method saves the record to the database and adds the record to the items value provider.
+    handleAddItem: function(component, event, helper){
     }
+    
+    
 })
